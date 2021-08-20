@@ -240,8 +240,7 @@ def replace_user_date(user):
         if key in user:
             temp_user_object[user_data_translation[key]] = user[key]
     temp_user_object["age"] = user["age"]
-    print(temp_user_object)
-    return  temp_user_object
+    return temp_user_object
 
 
 def json_validation(user):

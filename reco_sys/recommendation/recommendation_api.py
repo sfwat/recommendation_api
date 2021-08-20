@@ -13,7 +13,7 @@ recommend_api = AppBlueprint('recommend', __name__)
 api = recommend_api
 
 
-@api.POST('/reco_product')
+@api.POST('/product_reco')
 def get_recommend_product():
     user = current_request.get_json()
     try:
