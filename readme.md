@@ -20,10 +20,6 @@ Api Documentaion
 
 + Request
 
-    + Headers
-    
-            accept: application/json
-            content-type: application/
     + Schema  
             
              {
