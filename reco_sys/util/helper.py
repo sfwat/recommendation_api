@@ -185,13 +185,15 @@ def predict(user):
     target_cols = np.array(target_cols)
     preds = np.argsort(preds, axis=1)
     preds = np.fliplr(preds)[:, :7]
-    final_preds = [" ".join(list(target_cols[pred])) for pred in preds]
+    final_preds = [list(target_cols[pred]) for pred in preds]
+    final_preds = final_preds[0]
 
-    return replace_response(final_preds[0])
+    return translate_product(final_preds)
 
 
-def replace_response(response):
-    response_translation = {
+def translate_product(product_list):
+    response = {}
+    product_translation = {
         "ind_ahor_fin_ult1": "Saving Account",
         "ind_aval_fin_ult1": "Guarantees",
         "ind_cco_fin_ult1": "Current Accounts",
@@ -217,10 +219,10 @@ def replace_response(response):
         "ind_nom_pens_ult1": "Pensions",
         "ind_recibo_ult1": "Direct Debit"
     }
-    for key in response_translation:
-        if key in response:
-            response = response.replace(key, response_translation[key]+ " ---")
-    return [response]
+    for count, value in enumerate(product_list, start=1):
+        response[f"product{str(count)}"] = product_translation[value]
+
+    return response
 
 
 def replace_user_date(user):
