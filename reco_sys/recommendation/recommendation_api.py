@@ -27,4 +27,4 @@ def get_recommend_product():
     except Exception as e:
         print(str(e))
         return "error occurred while getting recommended products", 500
-    return jsonify({"recommendations": output}), 500
+    return jsonify({"recommendations": output}), 200 # sorry
