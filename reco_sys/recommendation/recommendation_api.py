@@ -26,5 +26,5 @@ def get_recommend_product():
         output = predict(user)
     except Exception as e:
         print(str(e))
-        return "error occured while retriving recommended product", 200
-    return jsonify({"recommendations": output})
+        return "error occurred while getting recommended products", 500
+    return jsonify({"recommendations": output}), 500
